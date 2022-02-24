@@ -1,0 +1,17 @@
+	 @mixin mmax($width, $height: 0) {
+		$w: $width + px;
+		$h: $height + px;
+  
+		@if $height==0 {
+			 @media all and (max-width: $w) {
+				  @content;
+			 }
+		}
+  
+		@else {
+			 @media all and (max-width: $w) and (max-height: $h) {
+				  @content;
+			 }
+		}
+  }
+	
