@@ -5,6 +5,11 @@
 	padding: 0;
 	max-width: 1140px;
 	min-width: 320px;
+  &_image {
+    background-image: url('../images/china-rose.png');
+    width: 150px;
+    height: 150px;
+  }
 }
 .container-fluid {
 	max-width: 1430px;

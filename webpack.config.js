@@ -13,9 +13,12 @@ if (process.env.NODE_ENV === "production") {
 module.exports = {
 	mode: mode,
 	target: target,
-	
+
+	entry: './src/index.js',
+
 	output: {
 		path: path.resolve(__dirname, "dist"),
+		filename: "[name]-[fullhash].js",
 		assetModuleFilename: "images/[hash][ext][query]",
 	},
 	
@@ -64,17 +67,19 @@ module.exports = {
 	},
 	plugins: [
 		new CleanWebpackPlugin(),
-		new MiniCssExtractPlugin(),
+		new MiniCssExtractPlugin({
+			filename: "[name]-[fullhash].css",
+		}),
 		new HtmlWebpackPlugin({
 			template: "./src/index.html",
 		}),
 	],
 	
-	devtool: "source-map",
+	devtool: "inline-source-map",
 	devServer: {
 		historyApiFallback: true,
 		static: {
-			directory: path.resolve(__dirname, './dist'),
+			directory: path.resolve(__dirname, './src'),
 		},
 		open: true,
 		compress: true,
